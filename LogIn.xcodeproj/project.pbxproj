@@ -44,7 +44,6 @@
 		801F5140226F9F5E0085BBE3 = {
 			isa = PBXGroup;
 			children = (
-				801F5161226FB4360085BBE3 /* Model */,
 				801F514B226F9F5E0085BBE3 /* LogIn */,
 				801F514A226F9F5E0085BBE3 /* Products */,
 			);
@@ -62,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				801F514C226F9F5E0085BBE3 /* AppDelegate.swift */,
+				801F5161226FB4360085BBE3 /* Model */,
 				801F515E226FAA3B0085BBE3 /* Controllers */,
 				801F5150226F9F5E0085BBE3 /* Main.storyboard */,
 				801F5153226F9F5F0085BBE3 /* Assets.xcassets */,

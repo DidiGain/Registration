@@ -14,12 +14,7 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
+ 
     @IBAction func loginPressed(_ sender: UIButton) {
         guard  loginTextField.text?.isEmpty == false,
                loginTextField.text == user.login
@@ -36,17 +31,6 @@ class LoginVC: UIViewController {
         }
     }
     
-    
-    @IBAction func remindLoginPressed(_ sender: UIButton) {
-      
-        
-    }
-  
-    
-    @IBAction func remindPasswordPressed(_ sender: UIButton) {
-       
-    }
-    
     func alertMessage(message: String) {
         let ac = UIAlertController(title: "Try again", message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default)
@@ -55,8 +39,7 @@ class LoginVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let dvc = segue.destination as? WelcomeVC else { return }
-        
+   
         if segue.identifier == "WelcomeBoard" {
             let vc = segue.destination as! WelcomeVC
             vc.login = loginTextField.text
@@ -69,10 +52,11 @@ class LoginVC: UIViewController {
         } else {
             return
         }
-    
-   
-    
-    
 }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
 
 }

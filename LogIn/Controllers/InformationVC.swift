@@ -13,7 +13,6 @@ class InformationVC: UIViewController {
     var loginInfo: String!
     var passwordInfo: String!
     
-   
     @IBOutlet weak var loginReminder: UILabel!
     @IBOutlet weak var passwordReminder: UILabel!
    
