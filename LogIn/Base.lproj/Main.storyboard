@@ -66,6 +66,7 @@
                                         </state>
                                         <connections>
                                             <action selector="remindLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1UZ-DC-yod"/>
+                                            <segue destination="CiT-jK-N5X" kind="show" identifier="Login" id="0Hj-vS-LhW"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JAp-hz-v6O">
@@ -77,6 +78,7 @@
                                         </state>
                                         <connections>
                                             <action selector="remindPasswordPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tFL-f7-lfH"/>
+                                            <segue destination="CiT-jK-N5X" kind="show" identifier="Password" id="hRI-vU-Cxa"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -99,7 +101,6 @@
                     <connections>
                         <outlet property="loginTextField" destination="M9f-OU-eJc" id="xhN-Za-GWr"/>
                         <outlet property="passwordTextField" destination="0b0-1v-dhu" id="WWB-aS-EeU"/>
-                        <segue destination="CiT-jK-N5X" kind="show" identifier="Reminder" id="1SC-Xl-WDn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -161,6 +162,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOO-we-Ht0">
+                                <rect key="frame" x="35" y="159" width="250" height="26.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="uet-aQ-0N0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="OT7-O0-QEX">
                                 <rect key="frame" x="35" y="226" width="100" height="64"/>
                                 <subviews>
@@ -184,18 +194,19 @@
                                     <constraint firstItem="q7g-E7-gvd" firstAttribute="width" secondItem="NmI-Dp-YCK" secondAttribute="width" id="aIa-Kl-y5j"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hC8-Kd-fnQ" userLabel="Personal Info Stack View">
-                                <rect key="frame" x="149" y="226" width="152" height="116"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Xvg-A1-VSf">
+                                <rect key="frame" x="143" y="226" width="152" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H03-Mk-cbK" userLabel="LoginLabel">
-                                        <rect key="frame" x="0.0" y="0.0" width="152" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="25"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PvU-aj-NLQ" userLabel="PasswordLabel">
-                                        <rect key="frame" x="0.0" y="66" width="152" height="50"/>
+                                        <rect key="frame" x="0.0" y="40" width="152" height="25"/>
                                         <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="Hc8-lq-hIX"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="152" id="MxY-xY-8Ws"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -204,33 +215,23 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="H03-Mk-cbK" firstAttribute="width" secondItem="PvU-aj-NLQ" secondAttribute="width" id="UUg-bh-cgO"/>
+                                    <constraint firstItem="H03-Mk-cbK" firstAttribute="width" secondItem="PvU-aj-NLQ" secondAttribute="width" id="IfZ-kj-iqa"/>
+                                    <constraint firstItem="H03-Mk-cbK" firstAttribute="height" secondItem="PvU-aj-NLQ" secondAttribute="height" id="tXS-If-KcC"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOO-we-Ht0">
-                                <rect key="frame" x="35" y="159" width="250" height="26.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="uet-aQ-0N0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.77312791449999996" green="1" blue="0.94116905179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="Xvg-A1-VSf" firstAttribute="leading" secondItem="OT7-O0-QEX" secondAttribute="trailing" constant="8" id="453-S6-8TF"/>
                             <constraint firstItem="iOO-we-Ht0" firstAttribute="centerX" secondItem="Sud-xr-Q2G" secondAttribute="centerX" id="5by-Kh-Ym7"/>
                             <constraint firstItem="OT7-O0-QEX" firstAttribute="leading" secondItem="iOO-we-Ht0" secondAttribute="leading" id="7Bc-Up-TZu"/>
-                            <constraint firstItem="hC8-Kd-fnQ" firstAttribute="leading" secondItem="OT7-O0-QEX" secondAttribute="trailing" constant="14" id="XIw-ay-L8Y"/>
+                            <constraint firstItem="Xvg-A1-VSf" firstAttribute="top" secondItem="iOO-we-Ht0" secondAttribute="bottom" constant="40.5" id="Xyg-yH-vdw"/>
                             <constraint firstItem="OT7-O0-QEX" firstAttribute="top" secondItem="iOO-we-Ht0" secondAttribute="bottom" constant="40.5" id="mOx-WY-DkP"/>
-                            <constraint firstItem="hC8-Kd-fnQ" firstAttribute="top" secondItem="iOO-we-Ht0" secondAttribute="bottom" constant="40.5" id="tgT-YL-CV9"/>
                             <constraint firstItem="iOO-we-Ht0" firstAttribute="top" secondItem="pwG-Ze-leO" secondAttribute="top" constant="95" id="ukK-rb-Bxp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pwG-Ze-leO"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem id="heL-ed-WPK"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="loginReminder" destination="H03-Mk-cbK" id="2Zf-hh-ZtX"/>
@@ -260,4 +261,7 @@
             <point key="canvasLocation" x="136.875" y="137.5"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="hRI-vU-Cxa"/>
+    </inferredMetricsTieBreakers>
 </document>

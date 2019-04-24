@@ -38,13 +38,13 @@ class LoginVC: UIViewController {
     
     
     @IBAction func remindLoginPressed(_ sender: UIButton) {
-         performSegue(withIdentifier: "Reminder", sender: nil)
+      
         
     }
   
     
     @IBAction func remindPasswordPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "Reminder", sender: nil)
+       
     }
     
     func alertMessage(message: String) {
@@ -55,12 +55,24 @@ class LoginVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let dvc = segue.destination as? WelcomeVC else { return }
-        dvc.login = loginTextField.text
-    }
+//        guard let dvc = segue.destination as? WelcomeVC else { return }
+        
+        if segue.identifier == "WelcomeBoard" {
+            let vc = segue.destination as! WelcomeVC
+            vc.login = loginTextField.text
+        } else if segue.identifier == "Login" {
+            let vc = segue.destination as! InformationVC
+            vc.loginInfo = user.login
+        } else if segue.identifier == "Password" {
+            let vc = segue.destination as! InformationVC
+            vc.passwordInfo = user.password
+        } else {
+            return
+        }
     
    
     
     
 }
 
+}
