@@ -59,5 +59,27 @@ class LoginVC: UIViewController {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
     }
+    
+    @objc func updateForKeyboard(notification: Notification) {
+        guard
+            let userInfo = notification.userInfo as? [String: Any],
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+            else { return }
+
+        if self.view.frame.origin.y == 0 {
+            self.view.frame.origin.y -= keyboardFrame.height
+        }
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y += keyboardFrame.height
+        }
+
+    }
+    
+    override func viewDidLoad() {
+        let notification = NotificationCenter.default
+        notification.addObserver(self, selector: #selector(updateForKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notification.addObserver(self, selector: #selector(updateForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+   
 
 }
