@@ -10,7 +10,7 @@ import UIKit
 
 let user = UserInfo()
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -60,26 +60,9 @@ class LoginVC: UIViewController {
         self.view.endEditing(true)
     }
     
-    @objc func updateForKeyboard(notification: Notification) {
-        guard
-            let userInfo = notification.userInfo as? [String: Any],
-            let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-            else { return }
-
-        if self.view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= keyboardFrame.height
-        }
-        if self.view.frame.origin.y != 0{
-            self.view.frame.origin.y += keyboardFrame.height
-        }
-
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
-    override func viewDidLoad() {
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(updateForKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
-        notification.addObserver(self, selector: #selector(updateForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-   
-
 }
