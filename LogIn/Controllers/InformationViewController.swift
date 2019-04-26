@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InformationVC: UIViewController {
+class InformationViewController: UIViewController {
 
     var loginInfo: String!
     var passwordInfo: String!

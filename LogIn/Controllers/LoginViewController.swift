@@ -10,7 +10,7 @@ import UIKit
 
 let user = UserInfo()
 
-class LoginVC: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -57,13 +57,13 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
    
         if segue.identifier == "WelcomeBoard" {
-            let vc = segue.destination as! WelcomeVC
+            let vc = segue.destination as! WelcomeViewController
             vc.login = loginTextField.text
         } else if segue.identifier == "Login" {
-            let vc = segue.destination as! InformationVC
+            let vc = segue.destination as! InformationViewController
             vc.loginInfo = user.login
         } else if segue.identifier == "Password" {
-            let vc = segue.destination as! InformationVC
+            let vc = segue.destination as! InformationViewController
             vc.passwordInfo = user.password
         } else {
             return
