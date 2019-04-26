@@ -14,7 +14,23 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
- 
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    
+    override func viewDidLoad() {
+        registerForKeyboardNotifications()
+    }
+    
+    @IBAction func stopEditing(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
+    
+    
+    @IBAction func tapRecognized(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    
     @IBAction func loginPressed(_ sender: UIButton) {
         guard  loginTextField.text?.isEmpty == false,
                loginTextField.text == user.login
@@ -55,14 +71,42 @@ class LoginVC: UIViewController, UITextFieldDelegate {
 }
     //MARK: - Keyboard Settings
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        self.view.endEditing(true)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWasShown(_:)),
+            name: UIResponder.keyboardDidShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillBeHidden),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc func keyboardWasShown(_ notification: NSNotification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else {
+            return
+        }
+        
+        let height = keyboardFrame.cgRectValue.size.height
+        
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
+        
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+    }
+    
+    @objc func keyboardWillBeHidden() {
+        scrollView.contentInset = UIEdgeInsets.zero
+        scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
 }

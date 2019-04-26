@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REGISTRATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rhD-U1-Q5J">
-                                <rect key="frame" x="89" y="244" width="236" height="44"/>
+                                <rect key="frame" x="89" y="426" width="236" height="44"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,8 +27,8 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rhD-U1-Q5J" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="Za0-he-p5F"/>
-                            <constraint firstItem="rhD-U1-Q5J" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="gn9-eV-Osx"/>
+                            <constraint firstItem="rhD-U1-Q5J" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4Zx-gG-9TA"/>
+                            <constraint firstItem="rhD-U1-Q5J" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="upL-ce-dn3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
