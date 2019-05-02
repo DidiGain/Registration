@@ -75,8 +75,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     //MARK: - Keyboard Settings
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
+        
+            let nextTag = textField.tag + 1
+            
+            if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+                nextResponder.becomeFirstResponder()
+            } else {
+                textField.resignFirstResponder()
+            }
+            return true
     }
     
     func registerForKeyboardNotifications() {
@@ -99,16 +106,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         guard let userInfo = notification.userInfo as? [String: Any],
               let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
-        let height = keyboardFrame.size.height
+        let height = keyboardFrame.height
         
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         
+    
+        
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
+        
+     
     }
     
     @objc func keyboardWillBeHidden(notification: Notification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
 }
