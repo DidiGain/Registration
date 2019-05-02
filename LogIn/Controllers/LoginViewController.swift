@@ -19,9 +19,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         registerForKeyboardNotifications()
-        
-        loginTextField.delegate = self
-        passwordTextField.delegate = self
     }
     
     @IBAction func stopEditing(_ sender: UITextField) {
@@ -108,14 +105,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let height = keyboardFrame.height
         
-        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
-        
-    
-        
+        let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height + 80, right: 0)
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
-        
-     
+ 
     }
     
     @objc func keyboardWillBeHidden(notification: Notification) {
