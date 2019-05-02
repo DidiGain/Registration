@@ -8,7 +8,7 @@
 
 import UIKit
 
-let user = UserInfo()
+let user = User()
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -19,6 +19,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         registerForKeyboardNotifications()
+        
+        loginTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func stopEditing(_ sender: UITextField) {
@@ -79,25 +82,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(keyboardWasShown(_:)),
-            name: UIResponder.keyboardDidShowNotification,
+            selector: #selector(keyboardWillBeShown(notification:)),
+            name: UIResponder.keyboardWillShowNotification,
             object: nil
         )
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(keyboardWillBeHidden),
+            selector: #selector(keyboardWillBeHidden(notification:)),
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
     }
     
-    @objc func keyboardWasShown(_ notification: NSNotification) {
-        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else {
-            return
-        }
+    @objc func keyboardWillBeShown(notification: NSNotification) {
+        guard let userInfo = notification.userInfo as? [String: Any],
+              let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         
-        let height = keyboardFrame.cgRectValue.size.height
+        let height = keyboardFrame.size.height
         
         let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)
         
@@ -105,7 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         scrollView.scrollIndicatorInsets = contentInsets
     }
     
-    @objc func keyboardWillBeHidden() {
+    @objc func keyboardWillBeHidden(notification: Notification) {
         scrollView.contentInset = UIEdgeInsets.zero
         scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
     }

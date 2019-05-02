@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserInfo {
+class User {
     let login = "Dinara"
     let password = "swift"
 }
